@@ -1,0 +1,77 @@
+Problema de Machine Learning (Deteccion de Fraude en Transacciones)
+
+Una empresa de pagos digitales desea predecir si una transaccion es fraudulenta usando un conjunto de datos historicos.
+
+Se dispone de un archivo CSV que contiene informacion de multiples transacciones con las siguientes columnas:
+
+monto
+hora
+edad_cliente
+num_intentos_previos
+fraude (variable objetivo: 0 = no fraude, 1 = fraude)
+
+Problema
+
+Debes desarrollar una funcion en Python que:
+
+1. Cargue el dataset desde un archivo CSV
+2. Limpie los datos (manejo de valores nulos)
+3. Separe variables independientes (X) y variable objetivo (y)
+4. Divida los datos en entrenamiento y prueba
+5. Entrene un modelo de clasificacion usando RandomForestClassifier
+6. Utilice el modelo entrenado para predecir fraude en el conjunto de prueba
+7. Evalue el modelo usando accuracy
+
+Especificacion exacta de la funcion
+
+Debes implementar la siguiente funcion:
+
+def detectar_fraude_transacciones(ruta_csv: str, test_size: float, random_state: int) -> tuple:
+
+Argumentos
+
+ruta_csv (str): Ruta del archivo CSV con los datos de transacciones
+test_size (float): Proporcion del dataset que se usara como conjunto de prueba (por ejemplo, 0.2)
+random_state (int): Semilla para asegurar reproducibilidad en la separacion de datos y en el modelo
+
+Requisitos tecnicos
+
+Debes usar obligatoriamente:
+
+pandas para cargar y manipular los datos
+numpy para el manejo numerico
+sklearn:
+train_test_split
+RandomForestClassifier
+accuracy_score
+
+Salida esperada
+
+La funcion debe retornar:
+
+(predicciones, accuracy)
+
+Donde:
+
+predicciones: un arreglo (numpy array o lista) con las predicciones del modelo para todas las transacciones del conjunto de prueba (valores 0 o 1)
+accuracy: un numero flotante entre 0 y 1 que representa la exactitud del modelo
+
+Consideraciones importantes
+
+No debes incluir la columna fraude dentro de X
+Debes entrenar el modelo antes de hacer predicciones
+Las predicciones deben corresponder unicamente al conjunto de prueba
+Debes manejar valores nulos (puedes eliminarlos o imputarlos)
+El flujo debe ser reproducible usando random_state
+
+Ejemplo de uso esperado
+
+preds, acc = detectar_fraude_transacciones("transacciones.csv", 0.2, 42)
+
+print("Predicciones:", preds)
+print("Accuracy:", acc)
+
+Enfoque conceptual
+
+Este problema evalua la comprension del flujo completo de machine learning para clasificacion binaria: preparacion de datos, entrenamiento supervisado, prediccion sobre nuevos casos y evaluacion del desempeno del modelo.
+

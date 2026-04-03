@@ -1,0 +1,75 @@
+Problema de Machine Learning (Predicción de Churn)
+
+Una empresa de telecomunicaciones desea predecir qué clientes abandonarán el servicio (churn) a partir de un conjunto de datos históricos.
+
+Se dispone de un archivo CSV que contiene información de múltiples clientes con las siguientes columnas:
+
+edad
+ingresos
+tiempo_cliente (en meses)
+num_productos
+churn (variable objetivo: 0 = no abandona, 1 = abandona)
+
+Problema
+
+Debes desarrollar una función en Python que:
+
+1. Cargue el dataset desde un archivo CSV
+2. Limpie los datos (manejo de valores nulos)
+3. Separe variables independientes (X) y variable objetivo (y)
+4. Divida los datos en entrenamiento y prueba
+5. Entrene un modelo de clasificación usando LogisticRegression
+6. Utilice el modelo entrenado para predecir el churn de los clientes en el conjunto de prueba
+7. Evalúe el modelo usando accuracy
+
+Especificación exacta de la función
+
+Debes implementar la siguiente función:
+
+def predecir_churn_clientes(ruta_csv: str, test_size: float) -> tuple:
+
+Argumentos
+
+ruta_csv (str): Ruta del archivo CSV con los datos de los clientes
+test_size (float): Proporción del dataset que se usará como conjunto de prueba (por ejemplo, 0.2)
+
+Requisitos técnicos
+
+Debes usar obligatoriamente:
+
+pandas para cargar y manipular los datos
+numpy para el manejo numérico
+sklearn:
+train_test_split
+LogisticRegression
+accuracy_score
+
+Salida esperada
+
+La función debe retornar:
+
+(predicciones, accuracy)
+
+Donde:
+
+predicciones: un arreglo (numpy array o lista) con las predicciones del modelo para todos los clientes del conjunto de prueba (valores 0 o 1)
+accuracy: un número flotante entre 0 y 1 que representa la exactitud del modelo
+
+Consideraciones importantes
+
+No debes incluir la columna churn dentro de X
+Debes entrenar el modelo antes de hacer predicciones
+Las predicciones deben corresponder únicamente al conjunto de prueba
+El modelo debe generalizar, no memorizar
+Debes manejar valores nulos (puedes eliminarlos o imputarlos)
+
+Ejemplo de uso esperado
+
+preds, acc = predecir_churn_clientes("clientes.csv", 0.2)
+
+print("Predicciones:", preds)
+print("Accuracy:", acc)
+
+Enfoque conceptual
+
+Este problema evalúa la comprensión del flujo completo de machine learning: desde la preparación de los datos, el entrenamiento del modelo, hasta la generación de predicciones sobre múltiples clientes y la evaluación del desempeño del modelo.

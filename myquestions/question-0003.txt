@@ -1,0 +1,78 @@
+Problema de Machine Learning (Prediccion de Precio de Viviendas)
+
+Una empresa inmobiliaria desea estimar el precio de venta de viviendas a partir de un conjunto de datos historicos de propiedades.
+
+Se dispone de un archivo CSV que contiene informacion de multiples viviendas con las siguientes columnas:
+
+area_m2
+habitaciones
+banos
+antiguedad
+zona_indice
+precio (variable objetivo: valor numerico de venta)
+
+Problema
+
+Debes desarrollar una funcion en Python que:
+
+1. Cargue el dataset desde un archivo CSV
+2. Limpie los datos (manejo de valores nulos)
+3. Separe variables independientes (X) y variable objetivo (y)
+4. Divida los datos en entrenamiento y prueba
+5. Entrene un modelo de regresion usando RandomForestRegressor
+6. Utilice el modelo entrenado para predecir el precio de las viviendas en el conjunto de prueba
+7. Evalue el modelo usando mean_squared_error
+
+Especificacion exacta de la funcion
+
+Debes implementar la siguiente funcion:
+
+def predecir_precio_viviendas(ruta_csv: str, test_size: float, random_state: int) -> tuple:
+
+Argumentos
+
+ruta_csv (str): Ruta del archivo CSV con los datos de las viviendas
+test_size (float): Proporcion del dataset que se usara como conjunto de prueba (por ejemplo, 0.2)
+random_state (int): Semilla para asegurar reproducibilidad en la separacion de datos y en el modelo
+
+Requisitos tecnicos
+
+Debes usar obligatoriamente:
+
+pandas para cargar y manipular los datos
+numpy para el manejo numerico
+sklearn:
+train_test_split
+RandomForestRegressor
+mean_squared_error
+
+Salida esperada
+
+La funcion debe retornar:
+
+(predicciones, mse)
+
+Donde:
+
+predicciones: un arreglo (numpy array o lista) con las predicciones del modelo para todas las viviendas del conjunto de prueba
+mse: un numero flotante mayor o igual a 0 que representa el error cuadratico medio del modelo
+
+Consideraciones importantes
+
+No debes incluir la columna precio dentro de X
+Debes entrenar el modelo antes de hacer predicciones
+Las predicciones deben corresponder unicamente al conjunto de prueba
+Debes manejar valores nulos (puedes eliminarlos o imputarlos)
+El flujo debe ser reproducible usando random_state
+
+Ejemplo de uso esperado
+
+preds, mse = predecir_precio_viviendas("viviendas.csv", 0.2, 42)
+
+print("Predicciones:", preds)
+print("MSE:", mse)
+
+Enfoque conceptual
+
+Este problema evalua la comprension del flujo completo de machine learning para regresion: preparacion de datos, entrenamiento supervisado, prediccion sobre nuevos casos y evaluacion del desempeno del modelo.
+
