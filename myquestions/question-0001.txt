@@ -1,75 +1,77 @@
-Problema de Machine Learning (Predicción de Churn)
+Problema de Machine Learning (Prediccion de Falla de Maquinaria)
 
-Una empresa de telecomunicaciones desea predecir qué clientes abandonarán el servicio (churn) a partir de un conjunto de datos históricos.
+Una planta industrial desea predecir si una maquina presentara falla en el proximo ciclo de operacion, usando datos historicos de sensores.
 
-Se dispone de un archivo CSV que contiene información de múltiples clientes con las siguientes columnas:
+Se dispone de un archivo CSV que contiene informacion de multiples registros con las siguientes columnas:
 
-edad
-ingresos
-tiempo_cliente (en meses)
-num_productos
-churn (variable objetivo: 0 = no abandona, 1 = abandona)
+temperatura_motor
+vibracion
+horas_uso
+presion
+ciclos_mantenimiento
+falla (variable objetivo: 0 = no falla, 1 = falla)
 
 Problema
 
-Debes desarrollar una función en Python que:
+Debes desarrollar una funcion en Python que:
 
 1. Cargue el dataset desde un archivo CSV
 2. Limpie los datos (manejo de valores nulos)
 3. Separe variables independientes (X) y variable objetivo (y)
 4. Divida los datos en entrenamiento y prueba
-5. Entrene un modelo de clasificación usando LogisticRegression
-6. Utilice el modelo entrenado para predecir el churn de los clientes en el conjunto de prueba
-7. Evalúe el modelo usando accuracy
+5. Entrene un modelo de clasificacion usando KNeighborsClassifier
+6. Utilice el modelo entrenado para predecir fallas en el conjunto de prueba
+7. Evalue el modelo usando accuracy
 
-Especificación exacta de la función
+Especificacion exacta de la funcion
 
-Debes implementar la siguiente función:
+Debes implementar la siguiente funcion:
 
-def predecir_churn_clientes(ruta_csv: str, test_size: float) -> tuple:
+def predecir_falla_maquinaria(ruta_csv: str, test_size: float, n_neighbors: int) -> tuple:
 
 Argumentos
 
-ruta_csv (str): Ruta del archivo CSV con los datos de los clientes
-test_size (float): Proporción del dataset que se usará como conjunto de prueba (por ejemplo, 0.2)
+ruta_csv (str): Ruta del archivo CSV con los datos de sensores
+test_size (float): Proporcion del dataset que se usara como conjunto de prueba (por ejemplo, 0.2)
+n_neighbors (int): Numero de vecinos a usar en KNeighborsClassifier
 
-Requisitos técnicos
+Requisitos tecnicos
 
 Debes usar obligatoriamente:
 
 pandas para cargar y manipular los datos
-numpy para el manejo numérico
+numpy para el manejo numerico
 sklearn:
 train_test_split
-LogisticRegression
+KNeighborsClassifier
 accuracy_score
 
 Salida esperada
 
-La función debe retornar:
+La funcion debe retornar:
 
 (predicciones, accuracy)
 
 Donde:
 
-predicciones: un arreglo (numpy array o lista) con las predicciones del modelo para todos los clientes del conjunto de prueba (valores 0 o 1)
-accuracy: un número flotante entre 0 y 1 que representa la exactitud del modelo
+predicciones: un arreglo (numpy array o lista) con las predicciones del modelo para todos los registros del conjunto de prueba (valores 0 o 1)
+accuracy: un numero flotante entre 0 y 1 que representa la exactitud del modelo
 
 Consideraciones importantes
 
-No debes incluir la columna churn dentro de X
+No debes incluir la columna falla dentro de X
 Debes entrenar el modelo antes de hacer predicciones
-Las predicciones deben corresponder únicamente al conjunto de prueba
-El modelo debe generalizar, no memorizar
+Las predicciones deben corresponder unicamente al conjunto de prueba
 Debes manejar valores nulos (puedes eliminarlos o imputarlos)
+Si n_neighbors es mayor que el numero de muestras de entrenamiento, debes ajustarlo al maximo valido
 
 Ejemplo de uso esperado
 
-preds, acc = predecir_churn_clientes("clientes.csv", 0.2)
+preds, acc = predecir_falla_maquinaria("maquinas.csv", 0.2, 5)
 
 print("Predicciones:", preds)
 print("Accuracy:", acc)
 
 Enfoque conceptual
 
-Este problema evalúa la comprensión del flujo completo de machine learning: desde la preparación de los datos, el entrenamiento del modelo, hasta la generación de predicciones sobre múltiples clientes y la evaluación del desempeño del modelo.
+Este problema evalua la comprension del flujo completo de machine learning para clasificacion binaria en contexto industrial: limpieza, entrenamiento, prediccion y evaluacion del desempeno.
