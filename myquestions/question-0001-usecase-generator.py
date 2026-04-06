@@ -9,7 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Compatibilidad con entornos que ejecutan el archivo via exec(code) sin __file__.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.getcwd()
 DATA_DIR = os.path.join(BASE_DIR, "data", "question-0001")
 os.makedirs(DATA_DIR, exist_ok=True)
 
